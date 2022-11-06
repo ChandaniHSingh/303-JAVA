@@ -2,4 +2,4 @@
 JAVA Assignments
 
 
- 8 11 12 not fully completed
+11 12 not fully completed
