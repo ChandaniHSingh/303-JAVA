@@ -139,13 +139,14 @@ public class ContactResource {
      */
     @DELETE
     @Consumes("application/json")
-    public String deleteJson(ContactDetail c) {
+    @Path("{id}")
+    public String deleteJson(@PathParam("id") int id) {
         int no_of_rows_updated =0;
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/chandani?zeroDateTimeBehavior=convertToNull","root","");
             Statement st = cn.createStatement();
-            no_of_rows_updated = st.executeUpdate("delete0 from contact where id = "+c.getId());
+            no_of_rows_updated = st.executeUpdate("delete from contact where id = "+id);
         }
         catch (ClassNotFoundException ex) {
             Logger.getLogger(ContactResource.class.getName()).log(Level.SEVERE, null, ex);
